@@ -416,7 +416,7 @@ button:hover {
 .panels{
   background:#fffffff6;
   box-shadow: 0 2rem 2rem #00000080;
-  min-height:519px;
+  min-height:619px;
   width:100%;
   max-width:500px;
   border-radius:3px;
