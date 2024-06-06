@@ -14,7 +14,7 @@ body {
    
     overflow: hidden;
 }
-.container-questions{
+.container-questions2{
     max-height: 500px;
     overflow-y: scroll;
     
@@ -77,7 +77,9 @@ button:hover {
 #timer-selection2 label {
     margin-right: 10px;
 }
-
+#clickHere2{
+    text-decoration: none;
+  }
 
 
 /* Modal Css  */
@@ -289,6 +291,20 @@ button:hover {
 }
 
 #wrongAnswer h3 {
+    color: #e74c3c;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+#wrongAnswer2 {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+#wrongAnswer2 h3 {
     color: #e74c3c;
     font-size: 18px;
     margin-bottom: 10px;
