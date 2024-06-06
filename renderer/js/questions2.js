@@ -842,6 +842,60 @@ const questions2 = [
         ]
     },
 
-    
+    {
+        image: "image16.PNG",
+        questions: [
+            {
+                question: "What is the generic name of Item A?",
+                answers: {
+                    a: "Area drain",
+                    b: "Floor drain",
+                    c: "Storm drain",
+                    d: "Roof drain"
+                },
+                correctAnswer: "d"
+            },
+            {
+                question: "What is Item B, which is used on parapet wall?",
+                answers: {
+                    a: "Corner drain",
+                    b: "Angle drain",
+                    c: "Scupper drain",
+                    d: "Roof wall drain"
+                },
+                correctAnswer: "c"
+            },
+            {
+                question: "Made of stainless steel, Item C is used in what area of the house?",
+                answers: {
+                    a: "Shower area",
+                    b: "Laundry area",
+                    c: "Garage area",
+                    d: "Kitchen area"
+                },
+                correctAnswer: "a"
+            },
+            {
+                question: "What is Item D?",
+                answers: {
+                    a: "Catch basin cover",
+                    b: "Trench cover",
+                    c: "Square drain",
+                    d: "Drain grate"
+                },
+                correctAnswer: "d"
+            },
+            {
+                question: "What is Item E which is used for maintenance?",
+                answers: {
+                    a: "Floor cover",
+                    b: "Access cover",
+                    c: "Cleanout",
+                    d: "Drain cove"
+                },
+                correctAnswer: "c"
+            }
+        ]
+    }
 
 ];
