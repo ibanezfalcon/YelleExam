@@ -503,6 +503,345 @@ const questions2 = [
                 correctAnswer: "d"
             }
         ]
-    }
+    },
+
+
+    {
+        image: "image10.PNG",
+        questions: [
+            {
+                question: "Item A is called _____.",
+                answers: {
+                    a: "Post tension slab",
+                    b: "Composite deck",
+                    c: "One way slab",
+                    d: "One way ribbed slab"
+                },
+                correctAnswer: "d"
+            },
+            {
+                question: "Item B is called _____.",
+                answers: {
+                    a: "Post tension slab",
+                    b: "Composite deck",
+                    c: "One way slab",
+                    d: "One way ribbed slab"
+                },
+                correctAnswer: "b"
+            },
+            {
+                question: "Item C is called _____.",
+                answers: {
+                    a: "Post tension slab",
+                    b: "Composite deck",
+                    c: "One way slab",
+                    d: "Hollow core slab"
+                },
+                correctAnswer: "c"
+            },
+            {
+                question: "Item D is called _____.",
+                answers: {
+                    a: "Post tension slab",
+                    b: "Composite deck",
+                    c: "One way slab",
+                    d: "Hollow core slab"
+                },
+                correctAnswer: "d"
+            },
+            {
+                question: "Item E is used for _____.",
+                answers: {
+                    a: "Post tension slab",
+                    b: "Composite deck",
+                    c: "One way slab",
+                    d: "Hollow core slab"
+                },
+                correctAnswer: "a"
+            }
+        ]
+    },
+
+    {
+        image: "image11.PNG",
+        questions: [
+            {
+                question: "What is the architectural style of figure A?",
+                answers: {
+                    a: "Baroque",
+                    b: "Romanesque",
+                    c: "Renaissance",
+                    d: "Gothic"
+                },
+                correctAnswer: "c"
+            },
+            {
+                question: "What is the architectural style of figure B?",
+                answers: {
+                    a: "Baroque",
+                    b: "Romanesque",
+                    c: "Renaissance",
+                    d: "Gothic"
+                },
+                correctAnswer: "b"
+            },
+            {
+                question: "What is the architectural style of figure C?",
+                answers: {
+                    a: "Baroque",
+                    b: "Romanesque",
+                    c: "Byzantine",
+                    d: "Gothic"
+                },
+                correctAnswer: "d"
+            },
+            {
+                question: "What is the architectural style of figure D?",
+                answers: {
+                    a: "Baroque",
+                    b: "Romanesque",
+                    c: "Byzantine",
+                    d: "Gothic"
+                },
+                correctAnswer: "c"
+            },
+            {
+                question: "What is the architectural style of figure E?",
+                answers: {
+                    a: "Baroque",
+                    b: "Romanesque",
+                    c: "Byzantine",
+                    d: "Gothic"
+                },
+                correctAnswer: "b"
+            }
+        ]
+    },
+
+    {
+        image: "image12.PNG",
+        questions: [
+            {
+                question: "What is figure A?",
+                answers: {
+                    a: "Concrete vibrator",
+                    b: "Boom concrete pump",
+                    c: "Power trowel",
+                    d: "Shotcrete"
+                },
+                correctAnswer: "d"
+            },
+            {
+                question: "What is figure B?",
+                answers: {
+                    a: "Concrete vibrator",
+                    b: "Boom concrete pump",
+                    c: "Power trowel",
+                    d: "Shotcrete"
+                },
+                correctAnswer: "c"
+            },
+            {
+                question: "What is figure C?",
+                answers: {
+                    a: "Concrete vibrator",
+                    b: "Boom concrete pump",
+                    c: "Power trowel",
+                    d: "Shear stud"
+                },
+                correctAnswer: "a"
+            },
+            {
+                question: "What is figure D?",
+                answers: {
+                    a: "Concrete vibrator",
+                    b: "Boom concrete pump",
+                    c: "Power trowel",
+                    d: "Shear stud"
+                },
+                correctAnswer: "b"
+            },
+            {
+                question: "What is figure E?",
+                answers: {
+                    a: "Concrete vibrator",
+                    b: "Boom concrete pump",
+                    c: "Power trowel",
+                    d: "Shear stud"
+                },
+                correctAnswer: "d"
+            }
+        ]
+    },
+
+    {
+        image: "image13.PNG",
+        questions: [
+            {
+                question: "What is the material composition of figure A?",
+                answers: {
+                    a: "Brass",
+                    b: "Stainless",
+                    c: "GI",
+                    d: "PVC"
+                },
+                correctAnswer: "c"
+            },
+            {
+                question: "What is the material composition of figure B?",
+                answers: {
+                    a: "Brass",
+                    b: "Stainless",
+                    c: "GI",
+                    d: "PVC"
+                },
+                correctAnswer: "b"
+            },
+            {
+                question: "What is the material composition of figure C?",
+                answers: {
+                    a: "Brass",
+                    b: "Stainless",
+                    c: "Copper",
+                    d: "PVC"
+                },
+                correctAnswer: "a"
+            },
+            {
+                question: "What is the material composition of figure D?",
+                answers: {
+                    a: "Brass",
+                    b: "Stainless",
+                    c: "Copper",
+                    d: "PVC"
+                },
+                correctAnswer: "c"
+            },
+            {
+                question: "What is the material composition of figure E?",
+                answers: {
+                    a: "Brass",
+                    b: "Stainless",
+                    c: "Copper",
+                    d: "PVC"
+                },
+                correctAnswer: "d"
+            }
+        ]
+    },
+
+    {
+        image: "image14.PNG",
+        questions: [
+            {
+                question: "What is the name of figure A, an example of a Byzantine church?",
+                answers: {
+                    a: "Hagia Sophia",
+                    b: "Hagia Irene",
+                    c: "Basilica of San Vitale",
+                    d: "Church of the Holy Apostle"
+                },
+                correctAnswer: "a"
+            },
+            {
+                question: "What is the name of figure B, an example of a Renaissance church?",
+                answers: {
+                    a: "Palais Garnier",
+                    b: "St. Peter's Basilica",
+                    c: "Tempietto",
+                    d: "Villa Capra La Rotunda"
+                },
+                correctAnswer: "b"
+            },
+            {
+                question: "What is the name of figure C, an example of a Renaissance chapel?",
+                answers: {
+                    a: "Palais Garnier",
+                    b: "St. Peter's Basilica",
+                    c: "Tempietto",
+                    d: "Villa Capra La Rotunda"
+                },
+                correctAnswer: "c"
+            },
+            {
+                question: "What is the name of figure D, an example of a Renaissance building?",
+                answers: {
+                    a: "Palais Garnier",
+                    b: "St. Peter's Basilica",
+                    c: "Tempietto",
+                    d: "Villa Capra La Rotunda"
+                },
+                correctAnswer: "d"
+            },
+            {
+                question: "What is the name of figure E, an example of a Gothic church?",
+                answers: {
+                    a: "Chartres",
+                    b: "Amiens",
+                    c: "Reims",
+                    d: "Cologne"
+                },
+                correctAnswer: "c"
+            }
+        ]
+    },
+
+    {
+        image: "image15.PNG",
+        questions: [
+            {
+                question: "What is the name of figure A?",
+                answers: {
+                    a: "Arch of Constantine",
+                    b: "Arch of Titus",
+                    c: "Arch of Septimius Severus",
+                    d: "None of the above"
+                },
+                correctAnswer: "a"
+            },
+            {
+                question: "What is the name of figure B?",
+                answers: {
+                    a: "Temple of Nike",
+                    b: "Temple of Zeus",
+                    c: "Erectheion",
+                    d: "Parthenon"
+                },
+                correctAnswer: "d"
+            },
+            {
+                question: "What is the name of figure C?",
+                answers: {
+                    a: "Temple of Augustus",
+                    b: "Pantheon",
+                    c: "Maisson Carree",
+                    d: "Temple of Saturn"
+                },
+                correctAnswer: "b"
+            },
+            {
+                question: "What is the name of figure D?",
+                answers: {
+                    a: "Circus of Nero",
+                    b: "Circus Maxentius",
+                    c: "Circus Maximus",
+                    d: "Circus Flaminius"
+                },
+                correctAnswer: "c"
+            },
+            {
+                question: "What is the name of figure E?",
+                answers: {
+                    a: "Temple of Nike",
+                    b: "Temple of Zeus",
+                    c: "Erectheion",
+                    d: "Parthenon"
+                },
+                correctAnswer: "c"
+            }
+        ]
+    },
+
+    
 
 ];
