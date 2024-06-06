@@ -5,52 +5,106 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enhanced Quiz with Timer Selection</title>
     <link rel="stylesheet" href="./css/exam.css">
+    <link rel="stylesheet" href="./css/identify.css">
     <script src="./renderer/js/questions.js" defer></script>
+    <script src="./renderer/js/questions2.js" defer></script>
   
 </head>
 <body>
-   
-    <div class="container">
-        <h1>Practice Exam</h1>
-        <div id="timer-selection">
-            <label for="timer">Select Timer:</label>
-            <select id="timer">
-                <option value="" disabled selected>Select time</option>
-                <option value="60">1 Minute</option>
-                <option value="300">5 Minutes</option>
-                <option value="1800">30 Minutes</option>
-                <option value="3600">1 Hour</option>
-                <option value="5400">1 Hour and 3 Minutes</option>
-                <option value="7200">2 Hours</option>
-            </select>
-           
-        </div>
-        <div id="timer" style="margin: 10px;">Time Remaining: <span id="time">0</span></div>
-        <div class="container-questions">
-            <button id="start-quiz" onclick="startQuiz()">Start Quiz</button>
-        <div id="quiz"></div>
-        <button id="submit-quiz" onclick="showResults()" style="display:none;">Submit</button>
-        <div id="results"></div>
-
-    <!-- <div class="scroll-btns">
-        <button onclick="scrollContainerTop()" id="scrollUpBtn" style="display:none;">Scroll Top</button>
-        <button onclick="scrollContainerBottom()" id="scrollDownBtn" style="display:none;">Scroll Bottom</button>
-    </div> -->
-
-        <a href="#" class="float" onclick="scrollContainerTop()" id="scrollUpBtn">
-        <img src="./Images/up.png"  height="20" width="20" style="margin-top: 10px;"/>
-        </a>
-
-        <a href="#" class="float2" onclick="scrollContainerBottom()" id="scrollDownBtn">
-            <img src="./Images/down.png"  height="20" width="20" style="margin-top: 10px;" />
-            </a>
-        
-        </div>
-        
+    <div class="container-fluid" style="margin-bottom: 5px;">
+        <label class="switch">
+            <span class="sun"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="#ffd43b"><circle r="5" cy="12" cx="12"></circle><path d="m21 13h-1a1 1 0 0 1 0-2h1a1 1 0 0 1 0 2zm-17 0h-1a1 1 0 0 1 0-2h1a1 1 0 0 1 0 2zm13.66-5.66a1 1 0 0 1 -.66-.29 1 1 0 0 1 0-1.41l.71-.71a1 1 0 1 1 1.41 1.41l-.71.71a1 1 0 0 1 -.75.29zm-12.02 12.02a1 1 0 0 1 -.71-.29 1 1 0 0 1 0-1.41l.71-.66a1 1 0 0 1 1.41 1.41l-.71.71a1 1 0 0 1 -.7.24zm6.36-14.36a1 1 0 0 1 -1-1v-1a1 1 0 0 1 2 0v1a1 1 0 0 1 -1 1zm0 17a1 1 0 0 1 -1-1v-1a1 1 0 0 1 2 0v1a1 1 0 0 1 -1 1zm-5.66-14.66a1 1 0 0 1 -.7-.29l-.71-.71a1 1 0 0 1 1.41-1.41l.71.71a1 1 0 0 1 0 1.41 1 1 0 0 1 -.71.29zm12.02 12.02a1 1 0 0 1 -.7-.29l-.66-.71a1 1 0 0 1 1.36-1.36l.71.71a1 1 0 0 1 0 1.41 1 1 0 0 1 -.71.24z"></path></g></svg></span>
+            <span class="moon" ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="m223.5 32c-123.5 0-223.5 100.3-223.5 224s100 224 223.5 224c60.6 0 115.5-24.2 155.8-63.4 5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6-96.9 0-175.5-78.8-175.5-176 0-65.8 36-123.1 89.3-153.3 6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z"></path></svg></span>
+            <input type="checkbox" class="input" onchange="ToggleDayNight()">
+            <span class="slider"></span>
+        </label>
     </div>
+    <div class="warpper">
+        <input class="radio" id="one" name="group" type="radio" checked>
+        <input class="radio" id="two" name="group" type="radio">
+        <div class="tabs">
+        <label class="tab" id="one-tab" for="one">Multiple Choice</label>
+        <label class="tab" id="two-tab" for="two">Indentify Images</label>
+          </div>
+        <div class="panels" id="all-panel">
+        <div class="panel" id="one-panel">
+            <div class="container">
+              
+              
+                <div id="timer-selection">
+                    <label for="timer" id="timerLabel">Select Timer:</label>
+                    <select id="timer">
+                        <option value="" disabled selected>Select time</option>
+                        <option value="60">1 Minute</option>
+                        <option value="300">5 Minutes</option>
+                        <option value="1800">30 Minutes</option>
+                        <option value="3600">1 Hour</option>
+                        <option value="5400">1 Hour and 3 Minutes</option>
+                        <option value="7200">2 Hours</option>
+                    </select>
+                   
+                </div>
+                <div id="timerDivLabel" style="margin: 10px;">Time Remaining: <span id="time">0</span> | <span><a href="#" onclick="showResults2()" id="clickHere">Click here if you're done</a></div>
+                <div class="container-questions">
+                    <button id="start-quiz" onclick="startQuiz()">Start Quiz</button>
+                <div id="quiz" style="margin-top: 5px;"></div>
+                <button id="submit-quiz" onclick="showResults()" style="display:none;">Submit</button>
+                <div id="results"></div>
+                <a href="#" class="float" onclick="scrollContainerTop()" id="scrollUpBtn">
+                <img src="./Images/up.png"  height="20" width="20" style="margin-top: 10px;"/>
+                </a>
+                <a href="#" class="float2" onclick="scrollContainerBottom()" id="scrollDownBtn">
+                    <img src="./Images/down.png"  height="20" width="20" style="margin-top: 10px;" />
+                    </a>
+                
+                </div>
+                
+            </div>
+        </div>
+
+
+
+        <div class="panel" id="two-panel">
+         <div class="container2">
+                <div id="timer-selection2">
+                    <label for="timer" id="timerLabel">Select Timer:</label>
+                    <select id="timer2">
+                        <option value="" disabled selected>Select time</option>
+                        <option value="60">1 Minute</option>
+                        <option value="300">5 Minutes</option>
+                        <option value="1800">30 Minutes</option>
+                        <option value="3600">1 Hour</option>
+                        <option value="5400">1 Hour and 3 Minutes</option>
+                        <option value="7200">2 Hours</option>
+                    </select>
+                   
+                </div>
+                <div id="timerDivLabel" style="margin: 10px;">Time Remaining: <span id="time2">0</span></div>
+                <div class="container-questions">
+                    <button id="start-quiz2" onclick="startQuiz2()">Start Quiz</button>
+                    <div id="quiz2" style="margin-top: 5px;"></div>
+                    <button id="submit-quiz2" onclick="showResultsForImages()" style="display:none;">Submit</button>
+                    <div id="results2"></div>
+                <a href="#" class="float" onclick="scrollContainerTop2()" id="scrollUpBtn2">
+                <img src="./Images/up.png"  height="20" width="20" style="margin-top: 10px;"/>
+                </a>
+                <a href="#" class="float2" onclick="scrollContainerBottom2()" id="scrollDownBtn2">
+                    <img src="./Images/down.png"  height="20" width="20" style="margin-top: 10px;" />
+                    </a>
+                
+                </div>
+                
+            </div>
+        </div>
+       
+        </div>
+      </div>
 
    
     
+
+   
+   <!-- firstModal  -->
     <input class="modal-state" id="modal-1" type="checkbox" />
     <div class="modal">
       <label class="modal__bg" for="modal-1"></label>
@@ -58,30 +112,68 @@
         <label class="modal__close" for="modal-1"></label>
         <h2 id="goodJobResult"></h2>
    
-            <button id="start-quiz" onclick="startQuiz()" >Restart Exam</button>
+            <button id="start-quiz" onclick="startQuiz()" style="margin-top: 5px;" >Restart Exam</button>
+            <div id="quiz2" style="margin-top: 5px;"></div>
+        <div id="results"></div>
+        <div id="wrongAnswer"></div>
        
+      </div>
+    </div>
+    
+    <!-- Second Modal -->
+    <input class="modal-state" id="modal-2" type="checkbox" />
+    <div class="modal">
+      <label class="modal__bg" for="modal-2"></label>
+      <div class="modal__inner">
+        <label class="modal__close" for="modal-2"></label>
+        <h2 id="goodJobResult2"></h2>
+        <button id="start-quiz" onclick="startQuiz2()" style="margin-top: 5px;" >Restart Exam</button>
         <div id="results"></div>
        
       </div>
     </div>
     
     
-    
 
    
     <script>
-        
-    let time = document.getElementById('time');
+    let time = document.getElementById('time');    
+    let time2 = document.getElementById('time2');
     let startExam = document.getElementById('start-quiz');
+    let startExam2 = document.getElementById('start-quiz2');
     let submitQuiz = document.getElementById('submit-quiz');
+    let submitQuiz2 = document.getElementById('submit-quiz2');
     let timer = document.getElementById('timer');
     let goodJobResult = document.getElementById('goodJobResult');
+    let goodJobResult2 = document.getElementById('goodJobResult2');
     let examResutDisplay = document.getElementById('examResutDisplay');
     
+
    
 
     let timerInterval;
+    let timerInterval2;
     let timeRemaining;
+    let timeRemaining2;
+
+    function startQuiz2() {
+    const selectedTime2 = document.getElementById('timer2').value;
+    if (!selectedTime2) {
+        alert("Please select a timer duration.");
+        return;
+    }
+    var modalCheckbox2 = document.getElementById('modal-2');
+    modalCheckbox2.checked = false;
+   
+    timeRemaining2 = parseInt(selectedTime2);
+    time2.textContent = formatTime(timeRemaining2); 
+    startExam2.style.display = 'none';
+    submitQuiz2.style.display = 'block';
+    const resultsContainer2 = document.getElementById('results2');
+    resultsContainer2.style.display = 'none';
+    buildQuiz2();
+    startTimer2();
+    }
 
     function startQuiz() {
     const selectedTime = document.getElementById('timer').value;
@@ -100,14 +192,9 @@
     resultsContainer.style.display = 'none';
     buildQuiz();
     startTimer();
-}
-
-
-    function setTimer() {
-        timeRemaining = timer.value;
-        time.textContent = timeRemaining;
-        clearInterval(timerInterval);
     }
+
+
 
     function startTimer() {
     timerInterval = setInterval(() => {
@@ -120,7 +207,22 @@
             showResults2();
         }
     }, 1000);
-}
+    }
+
+    
+
+    function startTimer2() {
+      timerInterval2 = setInterval(() => {
+       
+
+        timeRemaining2--;
+        time2.innerHTML = formatTime(timeRemaining2); 
+        if (timeRemaining2 <= 0) {
+            clearInterval(timerInterval2);
+            // showResults2();
+        }
+    }, 1000);
+    }
 
 function formatTime(timeInSeconds) {
     const hours = Math.floor(timeInSeconds / 3600);
@@ -161,10 +263,12 @@ function buildQuiz() {
                     <label>
                         <input type="radio" name="question${questionNumber}" value="${letter}">
                         <span class="radio-custom"></span>
-                        ${letter}: ${currentQuestion.answers[letter]}
+                        ${letter} ${currentQuestion.answers[letter]}
                     </label>
                 </li>`
             );
+           
+               
         }
 
         output.push(
@@ -178,6 +282,46 @@ function buildQuiz() {
     quizContainer.innerHTML = output.join('');
 }
 
+function buildQuiz2() {
+    shuffleQuestions2(); // Shuffle the questions
+    const quizContainer2 = document.getElementById('quiz2');
+    const output = [];
+
+    questions2.forEach((imageSet, imageIndex) => {
+        output.push(`<img src="./Images/${imageSet.image}" alt="Image ${imageIndex + 1}" id="imgDisplay" />`);
+        imageSet.questions.forEach((currentQuestion, questionIndex) => {
+         
+            const answers = [];
+             for (letter in currentQuestion.answers) {
+                 answers.push(
+                     `<li>
+                         <label>
+                             <input type="radio" name="question${questionIndex}" value="${letter}">
+                             <span class="radio-custom"></span>
+                             ${letter}. ${currentQuestion.answers[letter]}
+                         </label>
+                     </li>`
+                 );
+                
+                
+             }
+            
+             output.push(
+                 `<div class="question">
+                     <h2>${currentQuestion.question}</h2>
+                     <ul class="answers2">${answers.join('')}</ul>
+                 </div>`
+             );
+        });
+       
+    });
+    
+
+   
+   
+    quizContainer2.innerHTML = output.join('');
+}
+
 
 function handleAnswerSelection(event) {
     if (event.target.tagName === 'INPUT') {
@@ -185,8 +329,6 @@ function handleAnswerSelection(event) {
         labels.forEach(label => {
             label.classList.remove('selected');
         });
-
-     
         const selectedLabel = event.target.parentElement;
         selectedLabel.classList.add('selected');
     }
@@ -198,6 +340,7 @@ function showResults2() {
     const answerContainers = document.querySelectorAll('.answers');
     let numCorrect = 0;
     let unansweredQuestionIndex = -1; // Initialize index of unanswered question
+    let incorrectAnswers = []; // Array to store incorrect answers
 
     questions.forEach((currentQuestion, questionNumber) => {
         const answerContainer = answerContainers[questionNumber];
@@ -213,6 +356,12 @@ function showResults2() {
             answerContainer.querySelector(`input[value=${currentQuestion.correctAnswer}]`).parentNode.classList.add('correct');
             if (userAnswer) {
                 answerContainer.querySelector(`input[value=${userAnswer}]`).parentNode.classList.add('incorrect');
+                console.log(currentQuestion);
+            incorrectAnswers.push({
+                question: currentQuestion.question,
+                correctAnswer: currentQuestion.answers[currentQuestion.correctAnswer],
+                userAnswer: currentQuestion.answers[userAnswer]
+            });
             } else if (unansweredQuestionIndex === -1) {
                 unansweredQuestionIndex = questionNumber; // Set index of first unanswered question
             }
@@ -227,6 +376,20 @@ function showResults2() {
     } else {
         resultsContainer.innerHTML += "<br>Sorry, you did not pass the exam.";
     }
+
+     // Display incorrect answers
+     const wrongAnswerContainer = document.getElementById('wrongAnswer');
+    wrongAnswerContainer.style.display = 'block';
+    wrongAnswerContainer.innerHTML = '<h3>Incorrect Answers:</h3>';
+    incorrectAnswers.forEach((incorrect) => {
+        wrongAnswerContainer.innerHTML += `
+            <div class="incorrect-answer">
+                <p><strong>Question:</strong> ${incorrect.question}</p>
+                <p><strong>Your Answer:</strong> <span class="wrong">${incorrect.userAnswer}</span></p>
+                <p><strong>Correct Answer:</strong> <span class="correct2">${incorrect.correctAnswer}</span></p>
+            </div>`;
+    });
+
     goodJobResult.innerHTML = resultsContainer.innerHTML;
     showModalAfterDelay();
     startExam.style.display = 'block'; // Display restart button
@@ -236,21 +399,98 @@ function showResults2() {
 }
 
 
-    function showResults() {
+function showResults() {
     const answerContainers = document.querySelectorAll('.answers');
-    let unansweredQuestions = []; 
-   
+    let unansweredQuestions = [];
+    let incorrectAnswers = []; // Array to store incorrect answers
+    let numCorrect = 0;
+
     questions.forEach((currentQuestion, questionNumber) => {
         const answerContainer = answerContainers[questionNumber];
         const selector = `input[name=question${questionNumber}]:checked`;
         const userAnswer = (answerContainer.querySelector(selector) || {}).value;
+        
+        if (!userAnswer) {
+            unansweredQuestions.push(questionNumber);
+        } else if (userAnswer === currentQuestion.correctAnswer) {
+            numCorrect++;
+        } else {
+            
+            incorrectAnswers.push({
+                question: currentQuestion.question,
+                correctAnswer: currentQuestion.answers[currentQuestion.correctAnswer],
+                userAnswer: currentQuestion.answers[userAnswer]
+            });
+        }
+    });
 
+    if (unansweredQuestions.length > 0) {
+        alert('Please answer all questions before submitting.');
+        const highestUnansweredIndex = Math.max(...unansweredQuestions);
+        const lowestUnansweredIndex = Math.min(...unansweredQuestions);
+       
+        for (let i = highestUnansweredIndex; i >= lowestUnansweredIndex; i--) {
+            const unansweredQuestion = document.querySelectorAll('.question')[i];
+            unansweredQuestion.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        return; // Exit the function without further processing
+    }
+
+    // Calculate passing grade
+    const passingGrade = Math.ceil(questions.length * 0.6);
+    const pass = numCorrect >= passingGrade;
+
+    // Display the results
+    const resultsContainer = document.getElementById('results');
+    resultsContainer.style.display = 'block';
+    resultsContainer.innerHTML = `You got ${numCorrect} out of ${questions.length} correct.`;
+    if (pass) {
+        resultsContainer.innerHTML += "<br>Congratulations! You passed the exam.";
+    } else {
+        resultsContainer.innerHTML += "<br>Sorry, you did not pass the exam.";
+    }
+
+    // Display incorrect answers
+    const wrongAnswerContainer = document.getElementById('wrongAnswers');
+    wrongAnswerContainer.style.display = 'block';
+    wrongAnswerContainer.innerHTML = '<h3>Incorrect Answers:</h3>';
+    incorrectAnswers.forEach((incorrect) => {
+        wrongAnswerContainer.innerHTML += `<p><strong>Question:</strong> ${incorrect.question}<br>
+                                           <strong>Your Answer:</strong> ${incorrect.userAnswer}<br>
+                                           <strong>Correct Answer:</strong> ${incorrect.correctAnswer}</p>`;
+    });
+
+   
+
+    goodJobResult.innerHTML = resultsContainer.innerHTML;
+    showModalAfterDelay();
+    document.getElementById('start-quiz').style.display = 'block'; // Display restart button
+    document.getElementById('submit-quiz').style.display = 'none'; // Hide submit button
+    clearInterval(timerInterval);
+}
+
+
+
+
+function showResultsForImages() {
+    const answerContainers = document.querySelectorAll('.answers2');
+    let unansweredQuestions = []; 
+
+    questions2.forEach((imageSet, imageIndex) => {
+    imageSet.questions.forEach((currentQuestion, questionNumber) => {
+       
+        
+        const answerContainer = answerContainers[questionNumber];
+        const selector = `input[name=question${questionNumber}]:checked`;
+        const userAnswer = (answerContainer.querySelector(selector) || {}).value;
+     
         if (!userAnswer) {
             unansweredQuestions.push(questionNumber); 
         }
     });
+});
 
-   
     if (unansweredQuestions.length > 0) {
         alert('Please answer all questions before submitting.');
         const highestUnansweredIndex = Math.max(...unansweredQuestions);
@@ -267,12 +507,12 @@ function showResults2() {
    
     // Calculate passing grade
     const passingGrade = Math.ceil(questions.length * 0.6);
-    const numCorrect = calculateScore();
+    const numCorrect = calculateScore2();
     const pass = numCorrect >= passingGrade;
     // Display the results
-    const resultsContainer = document.getElementById('results');
+    const resultsContainer = document.getElementById('results2');
     resultsContainer.style.display = 'block';
-    resultsContainer.innerHTML = `You got ${numCorrect} out of ${questions.length} correct.`;
+    resultsContainer.innerHTML = `You got ${numCorrect} out of ${questions2[0].questions.length} correct.`;
     if (pass) {
         resultsContainer.innerHTML += "<br>Congratulations! You passed the exam.";
     } else {
@@ -280,12 +520,13 @@ function showResults2() {
     }
 
     
-    goodJobResult.innerHTML = resultsContainer.innerHTML;
-    showModalAfterDelay();
-    document.getElementById('start-quiz').style.display = 'block'; // Display restart button
-    document.getElementById('submit-quiz').style.display = 'none'; // Hide submit button
+    goodJobResult2.innerHTML = resultsContainer.innerHTML;
+    showModalAfterDelay2();
+    document.getElementById('start-quiz2').style.display = 'block'; // Display restart button
+    document.getElementById('submit-quiz2').style.display = 'none'; // Hide submit button
     clearInterval(timerInterval);
 }
+
 
 
 function calculateScore() {
@@ -314,6 +555,34 @@ function calculateScore() {
 }
 
 
+function calculateScore2() {
+    const answerContainers = document.querySelectorAll('.answers2');
+    let numCorrect = 0;
+
+    questions2.forEach((imageSet, imageIndex) => {
+        imageSet.questions.forEach((currentQuestion, questionNumber) => {
+        const answerContainer = answerContainers[questionNumber];
+        const selector = `input[name=question${questionNumber}]:checked`;
+        const userAnswer = (answerContainer.querySelector(selector) || {}).value;
+
+        if (userAnswer === currentQuestion.correctAnswer) {
+            numCorrect++;
+            answerContainer.querySelector(`input[value=${currentQuestion.correctAnswer}]`).parentNode.classList.add('correct');
+        } else {
+            if (userAnswer) {
+                answerContainer.querySelector(`input[value=${userAnswer}]`).parentNode.classList.add('incorrect');
+            } else {
+                unansweredQuestions.push(questionNumber); 
+            }
+            answerContainer.querySelector(`input[value=${currentQuestion.correctAnswer}]`).parentNode.classList.add('correct-answer');
+        }
+    });
+});
+
+    return numCorrect;
+}
+
+
 
 
     function shuffleQuestions() {
@@ -334,8 +603,33 @@ function calculateScore() {
 }
 
 
+function shuffleQuestions2() {
+    questions2.forEach((imageSet) => {
+        // Reset question numbers
+        for (let i = 0; i < imageSet.questions.length; i++) {
+            imageSet.questions[i].question = imageSet.questions[i].question.replace(/^\d+\.\s/, ''); // Remove existing number
+        }
+
+        for (let i = imageSet.questions.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [imageSet.questions[i], imageSet.questions[j]] = [imageSet.questions[j], imageSet.questions[i]];
+        }
+
+        // Update question numbers after shuffling
+        for (let i = 0; i < imageSet.questions.length; i++) {
+            imageSet.questions[i].question = `${i + 1}. ${imageSet.questions[i].question}`; // Adding the number to the question
+        }
+    });
+}
+
+
     function showModalAfterDelay() {
         var modalCheckbox = document.getElementById('modal-1');
+        modalCheckbox.checked = true;
+    }
+
+    function showModalAfterDelay2() {
+        var modalCheckbox = document.getElementById('modal-2');
         modalCheckbox.checked = true;
     }
 
@@ -368,6 +662,36 @@ function scrollContainerTop() {
         } else {
             document.getElementById("scrollDownBtn").style.display = "block";
         }
+    }
+
+
+    function ToggleDayNight(){
+        let isChecked = document.querySelector('.input').checked;
+        nigthAndDay(isChecked);
+       
+    }
+
+
+    function nigthAndDay(nightAndDay){
+        bodyElement = document.body;
+        let panelBody = document.getElementById('all-panel');
+        let timerLabel = document.getElementById('timerLabel');
+        let timer = document.getElementById('timerDivLabel');
+        if(nightAndDay){
+        timerLabel.style.color = "white";
+        timer.style.color = "white";
+        bodyElement.style.backgroundColor = "black";
+        panelBody.style.backgroundColor = "black";    
+        }else{
+        timerLabel.style.color = "black";
+        timer.style.color = "black";
+        bodyElement.style.backgroundColor = "white";
+        panelBody.style.backgroundColor = "white"; 
+        }
+       
+        
+       
+
     }
 
     </script>

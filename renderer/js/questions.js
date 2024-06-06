@@ -3408,6 +3408,4 @@ const questions = [
     }
 
    
-
-
 ];
