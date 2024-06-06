@@ -17,6 +17,7 @@ body {
 .container-questions{
     max-height: 500px;
     overflow-y: scroll;
+    
 }
 h1 {
     text-align: center;
@@ -236,4 +237,37 @@ button:hover {
   padding: 10px;
   background-color: green;
   color: white;
+}
+
+/* Scroll Design */
+.float{
+	position:fixed;
+	width:40px;
+	height:40px;
+	bottom:40px;
+	right:4px;
+	background-color:#0C9;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+	box-shadow: 2px 2px 3px #999;
+  bottom:62px;
+}
+
+.float2{
+	position:fixed;
+	width:40px;
+	height:40px;
+	bottom:40px;
+	right:4px;
+	background-color:#0C9;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+	box-shadow: 2px 2px 3px #999;
+  bottom:18px;
+}
+
+.my-float{
+	margin-top:22px;
 }

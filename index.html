@@ -9,6 +9,7 @@
   
 </head>
 <body>
+   
     <div class="container">
         <h1>Practice Exam</h1>
         <div id="timer-selection">
@@ -30,6 +31,20 @@
         <div id="quiz"></div>
         <button id="submit-quiz" onclick="showResults()" style="display:none;">Submit</button>
         <div id="results"></div>
+
+    <!-- <div class="scroll-btns">
+        <button onclick="scrollContainerTop()" id="scrollUpBtn" style="display:none;">Scroll Top</button>
+        <button onclick="scrollContainerBottom()" id="scrollDownBtn" style="display:none;">Scroll Bottom</button>
+    </div> -->
+
+        <a href="#" class="float" onclick="scrollContainerTop()" id="scrollUpBtn">
+        <img src="./Images/up.png"  height="20" width="20" style="margin-top: 10px;"/>
+        </a>
+
+        <a href="#" class="float2" onclick="scrollContainerBottom()" id="scrollDownBtn">
+            <img src="./Images/down.png"  height="20" width="20" style="margin-top: 10px;" />
+            </a>
+        
         </div>
         
     </div>
@@ -78,7 +93,7 @@
     modalCheckbox.checked = false;
    
     timeRemaining = parseInt(selectedTime);
-    time.textContent = formatTime(timeRemaining); // Convert to formatted time
+    time.textContent = formatTime(timeRemaining); 
     startExam.style.display = 'none';
     submitQuiz.style.display = 'block';
     const resultsContainer = document.getElementById('results');
@@ -166,13 +181,12 @@ function buildQuiz() {
 
 function handleAnswerSelection(event) {
     if (event.target.tagName === 'INPUT') {
-        // Remove 'selected' class from all labels
         const labels = document.querySelectorAll('.answers label');
         labels.forEach(label => {
             label.classList.remove('selected');
         });
 
-        // Add 'selected' class to the label of the clicked radio button
+     
         const selectedLabel = event.target.parentElement;
         selectedLabel.classList.add('selected');
     }
@@ -325,7 +339,36 @@ function calculateScore() {
         modalCheckbox.checked = true;
     }
 
+    
+// Function to scroll the container to the top
+function scrollContainerTop() {
+        var container = document.querySelector('.container-questions');
+        container.scrollTop = 0;
+    }
 
+    // Function to scroll the container to the bottom
+    function scrollContainerBottom() {
+        var container = document.querySelector('.container-questions');
+        container.scrollTop = container.scrollHeight;
+    }
+
+    // Function to toggle scroll buttons based on scroll position
+    document.querySelector('.container-questions').onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+        var container = document.querySelector('.container-questions');
+        if (container.scrollTop > 0) {
+            document.getElementById("scrollUpBtn").style.display = "block";
+        } else {
+            document.getElementById("scrollUpBtn").style.display = "none";
+        }
+
+        if (container.scrollHeight - container.scrollTop === container.clientHeight) {
+            document.getElementById("scrollDownBtn").style.display = "none";
+        } else {
+            document.getElementById("scrollDownBtn").style.display = "block";
+        }
+    }
 
     </script>
 </body>
