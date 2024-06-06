@@ -54,59 +54,59 @@ const questions2 = [
             }
         ]
     },
-    {
-        image: "image2.png",
-        questions: [
-            {
-                question: "Item A is called _____.",
-                answers: {
-                    a: "Architrave",
-                    b: "Tympanum",
-                    c: "Entablature",
-                    d: "Cornice"
-                },
-                correctAnswer: "d"
-            },
-            {
-                question: "Item B is called _____.",
-                answers: {
-                    a: "Architrave",
-                    b: "Tympanum",
-                    c: "Entablature",
-                    d: "Cornice"
-                },
-                correctAnswer: "a"
-            },
-            {
-                question: "Item C is called _____.",
-                answers: {
-                    a: "Shaft",
-                    b: "Tympanum",
-                    c: "Entablature",
-                    d: "Cornice"
-                },
-                correctAnswer: "a"
-            },
-            {
-                question: "Item D is called _____.",
-                answers: {
-                    a: "Shaft",
-                    b: "Tympanum",
-                    c: "Entablature",
-                    d: "Cornice"
-                },
-                correctAnswer: "b"
-            },
-            {
-                question: "Item E is called _____.",
-                answers: {
-                    a: "Shaft",
-                    b: "Tympanum",
-                    c: "Entablature",
-                    d: "Cornice"
-                },
-                correctAnswer: "c"
-            }
-        ]
-    }
+    // {
+    //     image: "image2.png",
+    //     questions: [
+    //         {
+    //             question: "Item A is called _____.",
+    //             answers: {
+    //                 a: "Architrave",
+    //                 b: "Tympanum",
+    //                 c: "Entablature",
+    //                 d: "Cornice"
+    //             },
+    //             correctAnswer: "d"
+    //         },
+    //         {
+    //             question: "Item B is called _____.",
+    //             answers: {
+    //                 a: "Architrave",
+    //                 b: "Tympanum",
+    //                 c: "Entablature",
+    //                 d: "Cornice"
+    //             },
+    //             correctAnswer: "a"
+    //         },
+    //         {
+    //             question: "Item C is called _____.",
+    //             answers: {
+    //                 a: "Shaft",
+    //                 b: "Tympanum",
+    //                 c: "Entablature",
+    //                 d: "Cornice"
+    //             },
+    //             correctAnswer: "a"
+    //         },
+    //         {
+    //             question: "Item D is called _____.",
+    //             answers: {
+    //                 a: "Shaft",
+    //                 b: "Tympanum",
+    //                 c: "Entablature",
+    //                 d: "Cornice"
+    //             },
+    //             correctAnswer: "b"
+    //         },
+    //         {
+    //             question: "Item E is called _____.",
+    //             answers: {
+    //                 a: "Shaft",
+    //                 b: "Tympanum",
+    //                 c: "Entablature",
+    //                 d: "Cornice"
+    //             },
+    //             correctAnswer: "c"
+    //         }
+    //     ]
+    // }
 ];
