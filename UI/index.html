@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Quiz with Timer Selection</title>
+    <link rel="stylesheet" href="/src//css/exam.css">
+    <script src="/src/renderer/js/questions.js" defer></script>
+  
+</head>
+<body>
+    <div class="container">
+        <h1>Practice Exam</h1>
+        <div id="timer-selection">
+            <label for="timer">Select Timer:</label>
+            <select id="timer">
+                <option value="" disabled selected>Select time</option>
+                <option value="60">1 Minute</option>
+                <option value="300">5 Minutes</option>
+                <option value="1800">30 Minutes</option>
+                <option value="3600">1 Hour</option>
+                <option value="5400">1 Hour and 3 Minutes</option>
+                <option value="7200">2 Hours</option>
+            </select>
+           
+        </div>
+        <div id="timer" style="margin: 10px;">Time Remaining: <span id="time">0</span></div>
+        <div class="container-questions">
+            <button id="start-quiz" onclick="startQuiz()">Start Quiz</button>
+        <div id="quiz"></div>
+        <button id="submit-quiz" onclick="showResults()" style="display:none;">Submit</button>
+        <div id="results"></div>
+        </div>
+        
+    </div>
+
+   
+    
+    <input class="modal-state" id="modal-1" type="checkbox" />
+    <div class="modal">
+      <label class="modal__bg" for="modal-1"></label>
+      <div class="modal__inner">
+        <label class="modal__close" for="modal-1"></label>
+        <h2 id="goodJobResult"></h2>
+   
+            <button id="start-quiz" onclick="startQuiz()" >Restart Exam</button>
+       
+        <div id="results"></div>
+       
+      </div>
+    </div>
+    
+    
+    
+
+   
+    <script>
+        
+    let time = document.getElementById('time');
+    let startExam = document.getElementById('start-quiz');
+    let submitQuiz = document.getElementById('submit-quiz');
+    let timer = document.getElementById('timer');
+    let goodJobResult = document.getElementById('goodJobResult');
+    let examResutDisplay = document.getElementById('examResutDisplay');
+    
+   
+
+    let timerInterval;
+    let timeRemaining;
+
+    function startQuiz() {
+    const selectedTime = document.getElementById('timer').value;
+    if (!selectedTime) {
+        alert("Please select a timer duration.");
+        return;
+    }
+    var modalCheckbox = document.getElementById('modal-1');
+    modalCheckbox.checked = false;
+   
+    timeRemaining = parseInt(selectedTime);
+    time.textContent = formatTime(timeRemaining); // Convert to formatted time
+    startExam.style.display = 'none';
+    submitQuiz.style.display = 'block';
+    const resultsContainer = document.getElementById('results');
+    resultsContainer.style.display = 'none';
+    buildQuiz();
+    startTimer();
+}
+
+
+    function setTimer() {
+        timeRemaining = timer.value;
+        time.textContent = timeRemaining;
+        clearInterval(timerInterval);
+    }
+
+    function startTimer() {
+    timerInterval = setInterval(() => {
+       
+
+        timeRemaining--;
+        time.innerHTML = formatTime(timeRemaining); 
+        if (timeRemaining <= 0) {
+            clearInterval(timerInterval);
+            showResults2();
+        }
+    }, 1000);
+}
+
+function formatTime(timeInSeconds) {
+    const hours = Math.floor(timeInSeconds / 3600);
+    const minutes = Math.floor((timeInSeconds % 3600) / 60);
+    const seconds = timeInSeconds % 60;
+
+    let formattedTime = "";
+    if (hours > 0) {
+        formattedTime += hours  + " hr ";
+    }
+    if (minutes > 0 || hours > 0) {
+        formattedTime += minutes + ":";
+    }
+    if (seconds > 0 || (minutes === 0 && hours === 0)) {
+        if ((minutes === 0 && seconds < 29) || (hours === 0 && minutes === 1 && seconds < 29)) {
+            formattedTime += '<span style="color:red">' + seconds + '</span>';
+        } else {
+            formattedTime += seconds ;
+        }
+    }
+
+    return formattedTime.trim();
+}
+
+
+
+
+function buildQuiz() {
+    shuffleQuestions(); // Shuffle the questions
+    const quizContainer = document.getElementById('quiz');
+    const output = [];
+
+    questions.forEach((currentQuestion, questionNumber) => {
+        const answers = [];
+        for (letter in currentQuestion.answers) {
+            answers.push(
+                `<li>
+                    <label>
+                        <input type="radio" name="question${questionNumber}" value="${letter}">
+                        <span class="radio-custom"></span>
+                        ${letter}: ${currentQuestion.answers[letter]}
+                    </label>
+                </li>`
+            );
+        }
+
+        output.push(
+            `<div class="question">
+                <h2>${currentQuestion.question}</h2>
+                <ul class="answers">${answers.join('')}</ul>
+            </div>`
+        );
+    });
+
+    quizContainer.innerHTML = output.join('');
+}
+
+
+function handleAnswerSelection(event) {
+    if (event.target.tagName === 'INPUT') {
+        // Remove 'selected' class from all labels
+        const labels = document.querySelectorAll('.answers label');
+        labels.forEach(label => {
+            label.classList.remove('selected');
+        });
+
+        // Add 'selected' class to the label of the clicked radio button
+        const selectedLabel = event.target.parentElement;
+        selectedLabel.classList.add('selected');
+    }
+}
+
+
+function showResults2() {
+    clearInterval(timerInterval);
+    const answerContainers = document.querySelectorAll('.answers');
+    let numCorrect = 0;
+    let unansweredQuestionIndex = -1; // Initialize index of unanswered question
+
+    questions.forEach((currentQuestion, questionNumber) => {
+        const answerContainer = answerContainers[questionNumber];
+        const selector = `input[name=question${questionNumber}]:checked`;
+        const userAnswer = (answerContainer.querySelector(selector) || {}).value;
+
+        if (userAnswer === currentQuestion.correctAnswer) {
+            numCorrect++;
+            answerContainer.style.color = 'green';
+            answerContainer.querySelector(`input[value=${currentQuestion.correctAnswer}]`).parentNode.classList.add('correct');
+        } else {
+            answerContainer.style.color = 'red';
+            answerContainer.querySelector(`input[value=${currentQuestion.correctAnswer}]`).parentNode.classList.add('correct');
+            if (userAnswer) {
+                answerContainer.querySelector(`input[value=${userAnswer}]`).parentNode.classList.add('incorrect');
+            } else if (unansweredQuestionIndex === -1) {
+                unansweredQuestionIndex = questionNumber; // Set index of first unanswered question
+            }
+        }
+    });
+
+    const resultsContainer = document.getElementById('results');
+    resultsContainer.style.display = 'block';
+    resultsContainer.innerHTML = `You got ${numCorrect} out of ${questions.length} correct.`;
+    if (numCorrect === questions.length) {
+        resultsContainer.innerHTML += "<br>Congratulations! You passed the exam.";
+    } else {
+        resultsContainer.innerHTML += "<br>Sorry, you did not pass the exam.";
+    }
+    goodJobResult.innerHTML = resultsContainer.innerHTML;
+    showModalAfterDelay();
+    startExam.style.display = 'block'; // Display restart button
+    document.getElementById('submit-quiz').style.display = 'none'; // Hide submit button
+
+    
+}
+
+
+    function showResults() {
+    const answerContainers = document.querySelectorAll('.answers');
+    let unansweredQuestions = []; 
+   
+    questions.forEach((currentQuestion, questionNumber) => {
+        const answerContainer = answerContainers[questionNumber];
+        const selector = `input[name=question${questionNumber}]:checked`;
+        const userAnswer = (answerContainer.querySelector(selector) || {}).value;
+
+        if (!userAnswer) {
+            unansweredQuestions.push(questionNumber); 
+        }
+    });
+
+   
+    if (unansweredQuestions.length > 0) {
+        alert('Please answer all questions before submitting.');
+        const highestUnansweredIndex = Math.max(...unansweredQuestions);
+        const lowestUnansweredIndex = Math.min(...unansweredQuestions);
+       
+        for (let i = highestUnansweredIndex; i >= lowestUnansweredIndex; i--) {
+            const unansweredQuestion = document.querySelectorAll('.question')[i];
+            unansweredQuestion.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        return; // Exit the function without further processing
+    }
+
+   
+    // Calculate passing grade
+    const passingGrade = Math.ceil(questions.length * 0.6);
+    const numCorrect = calculateScore();
+    const pass = numCorrect >= passingGrade;
+    // Display the results
+    const resultsContainer = document.getElementById('results');
+    resultsContainer.style.display = 'block';
+    resultsContainer.innerHTML = `You got ${numCorrect} out of ${questions.length} correct.`;
+    if (pass) {
+        resultsContainer.innerHTML += "<br>Congratulations! You passed the exam.";
+    } else {
+        resultsContainer.innerHTML += "<br>Sorry, you did not pass the exam.";
+    }
+
+    
+    goodJobResult.innerHTML = resultsContainer.innerHTML;
+    showModalAfterDelay();
+    document.getElementById('start-quiz').style.display = 'block'; // Display restart button
+    document.getElementById('submit-quiz').style.display = 'none'; // Hide submit button
+    clearInterval(timerInterval);
+}
+
+
+function calculateScore() {
+    const answerContainers = document.querySelectorAll('.answers');
+    let numCorrect = 0;
+
+    questions.forEach((currentQuestion, questionNumber) => {
+        const answerContainer = answerContainers[questionNumber];
+        const selector = `input[name=question${questionNumber}]:checked`;
+        const userAnswer = (answerContainer.querySelector(selector) || {}).value;
+
+        if (userAnswer === currentQuestion.correctAnswer) {
+            numCorrect++;
+            answerContainer.querySelector(`input[value=${currentQuestion.correctAnswer}]`).parentNode.classList.add('correct');
+        } else {
+            if (userAnswer) {
+                answerContainer.querySelector(`input[value=${userAnswer}]`).parentNode.classList.add('incorrect');
+            } else {
+                unansweredQuestions.push(questionNumber); 
+            }
+            answerContainer.querySelector(`input[value=${currentQuestion.correctAnswer}]`).parentNode.classList.add('correct-answer');
+        }
+    });
+
+    return numCorrect;
+}
+
+
+
+
+    function shuffleQuestions() {
+    // Reset question numbers
+    for (let i = 0; i < questions.length; i++) {
+        questions[i].question = questions[i].question.replace(/^\d+\.\s/, ''); // Remove existing number
+    }
+
+    for (let i = questions.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [questions[i], questions[j]] = [questions[j], questions[i]];
+    }
+
+    // Update question numbers after shuffling
+    for (let i = 0; i < questions.length; i++) {
+        questions[i].question = `${i + 1}. ${questions[i].question}`; // Adding the number to the question
+    }
+}
+
+
+    function showModalAfterDelay() {
+        var modalCheckbox = document.getElementById('modal-1');
+        modalCheckbox.checked = true;
+    }
+
+
+
+    </script>
+</body>
+</html>

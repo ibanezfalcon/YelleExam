@@ -1,0 +1,239 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f9f9f9;
+    color: #333;
+}
+.fluid-container {
+    max-width: 600px;
+    margin: auto;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+   
+    overflow: hidden;
+}
+.container-questions{
+    max-height: 500px;
+    overflow-y: scroll;
+}
+h1 {
+    text-align: center;
+    color: #333;
+}
+h2{
+    background-color: saddlebrown;
+    color: white;
+    padding: 10px;
+}
+.question {
+    margin-bottom: 20px;
+}
+.answers {
+    list-style-type: none;
+    padding: 0;
+}
+.answers li {
+    margin-bottom: 10px;
+}
+.correct {
+    color: green;
+}
+.incorrect {
+    color: red;
+}
+#results {
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: center;
+}
+#timer {
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    background-color: saddlebrown;
+}
+button:hover {
+    background: #0056b3;
+}
+#timer-selection {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+#timer-selection label {
+    margin-right: 10px;
+}
+
+
+
+/* Modal Css  */
+/* The Modal */
+/* [Object] Modal
+ * =============================== */
+ .modal {
+  opacity: 0;
+  visibility: hidden;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  text-align: left;
+  background: rgba(0,0,0, .9);
+  transition: opacity .25s ease;
+}
+
+.modal__bg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  cursor: pointer;
+}
+
+.modal-state {
+  display: none;
+}
+
+.modal-state:checked + .modal {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-state:checked + .modal .modal__inner {
+  top: 0;
+}
+
+.modal__inner {
+  transition: top .25s ease;
+  position: absolute;
+  top: -20%;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 50%;
+  margin: auto;
+  overflow: auto;
+  background: #fff;
+  border-radius: 5px;
+  padding: 1em 2em;
+  height: 30%;
+}
+
+.modal__close {
+  position: absolute;
+  right: 1em;
+  top: 1em;
+  width: 1.1em;
+  height: 1.1em;
+  cursor: pointer;
+}
+
+.modal__close:after,
+.modal__close:before {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 1.5em;
+  background: #ccc;
+  display: block;
+  transform: rotate(45deg);
+  left: 50%;
+  margin: -3px 0 0 -1px;
+  top: 0;
+}
+
+.modal__close:hover:after,
+.modal__close:hover:before {
+  background: #aaa;
+}
+
+.modal__close:before {
+  transform: rotate(-45deg);
+}
+
+@media screen and (max-width: 768px) {
+	
+  .modal__inner {
+    width: 90%;
+    height: 40%;
+    box-sizing: border-box;
+  }
+}
+
+
+/* Question and answer */
+
+.question {
+  margin-bottom: 20px;
+  border: 4px solid #ccc;
+  border-radius: 5px;
+  padding: 15px;
+  background-color: lightyellow;
+}
+
+.question h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.answers {
+  list-style-type: none;
+  padding: 0;
+}
+
+.answers li {
+  margin-bottom: 10px;
+}
+
+.answers label {
+  display: block;
+  cursor: pointer;
+}
+
+.answers label {
+  display: inline-block;
+  margin-bottom: 10px; /* Add some spacing between each answer option */
+}
+
+.answers input[type="radio"] {
+  display: inline-block;
+  vertical-align: middle; /* Align the radio button vertically with the text */
+  margin-right: 5px; /* Add some spacing between the radio button and the text */
+}
+
+.answers label:hover {
+  background-color: #e0e0e0;
+}
+
+.letter {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+
+/* Correct, wrong and unanswered */
+.correct-answer {
+  padding: 10px;
+  background-color: green;
+  color: white;
+}
+.correct{
+  padding: 10px;
+  background-color: green;
+  color: white;
+}
