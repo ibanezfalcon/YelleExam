@@ -296,7 +296,7 @@ function buildQuiz2() {
                  answers.push(
                      `<li>
                          <label>
-                             <input type="radio" name="question${questionIndex}" value="${letter}">
+                             <input type="radio" name="question${imageIndex}_${questionIndex}" value="${letter}">
                              <span class="radio-custom"></span>
                              ${letter}. ${currentQuestion.answers[letter]}
                          </label>
@@ -476,20 +476,25 @@ function showResults() {
 function showResultsForImages() {
     const answerContainers = document.querySelectorAll('.answers2');
     let unansweredQuestions = []; 
+    let incorrectAnswers = []; // To store incorrect answers
 
     questions2.forEach((imageSet, imageIndex) => {
-    imageSet.questions.forEach((currentQuestion, questionNumber) => {
-       
+        imageSet.questions.forEach((currentQuestion, questionNumber) => {
+            const answerContainer = answerContainers[questionNumber];
+            const selector = `input[name=question${imageIndex}_${questionNumber}]:checked`;
+            const userAnswer = (answerContainer.querySelector(selector) || {}).value;
         
-        const answerContainer = answerContainers[questionNumber];
-        const selector = `input[name=question${questionNumber}]:checked`;
-        const userAnswer = (answerContainer.querySelector(selector) || {}).value;
-     
-        if (!userAnswer) {
-            unansweredQuestions.push(questionNumber); 
-        }
+            if (!userAnswer) {
+                unansweredQuestions.push(questionNumber); 
+            } else if (userAnswer !== currentQuestion.correctAnswer) {
+                incorrectAnswers.push({
+                    question: currentQuestion.question,
+                    userAnswer: userAnswer,
+                    correctAnswer: currentQuestion.correctAnswer
+                });
+            }
+        });
     });
-});
 
     if (unansweredQuestions.length > 0) {
         alert('Please answer all questions before submitting.');
@@ -504,11 +509,11 @@ function showResultsForImages() {
         return; // Exit the function without further processing
     }
 
-   
     // Calculate passing grade
-    const passingGrade = Math.ceil(questions.length * 0.6);
-    const numCorrect = calculateScore2();
+    const passingGrade = Math.ceil(questions2[0].questions.length * 0.6);
+    const numCorrect = questions2[0].questions.length - incorrectAnswers.length;
     const pass = numCorrect >= passingGrade;
+    
     // Display the results
     const resultsContainer = document.getElementById('results2');
     resultsContainer.style.display = 'block';
@@ -519,13 +524,25 @@ function showResultsForImages() {
         resultsContainer.innerHTML += "<br>Sorry, you did not pass the exam.";
     }
 
-    
+    // Display incorrect answers
+    const wrongAnswerContainer = document.getElementById('wrongAnswer');
+    wrongAnswerContainer.style.display = 'block';
+    wrongAnswerContainer.innerHTML = '<h3>Incorrect Answers:</h3>';
+    incorrectAnswers.forEach((incorrect) => {
+        wrongAnswerContainer.innerHTML += `<div class="incorrect-answer">
+            <p><strong>Question:</strong> ${incorrect.question}</p>
+            <p><strong>Your Answer:</strong> ${incorrect.userAnswer}</p>
+            <p><strong>Correct Answer:</strong> ${incorrect.correctAnswer}</p>
+        </div>`;
+    });
+
     goodJobResult2.innerHTML = resultsContainer.innerHTML;
     showModalAfterDelay2();
     document.getElementById('start-quiz2').style.display = 'block'; // Display restart button
     document.getElementById('submit-quiz2').style.display = 'none'; // Hide submit button
     clearInterval(timerInterval);
 }
+
 
 
 
