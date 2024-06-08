@@ -19,6 +19,12 @@ body {
     overflow-y: scroll;
     
 }
+
+.container-questions3{
+  max-height: 500px;
+  overflow-y: scroll;
+  
+}
 h1 {
     text-align: center;
     color: #333;
@@ -31,6 +37,8 @@ h2{
 .question {
     margin-bottom: 20px;
 }
+
+
 .answers {
     list-style-type: none;
     padding: 0;
@@ -49,10 +57,20 @@ h2{
     margin-top: 20px;
     text-align: center;
 }
+#results3 {
+  font-weight: bold;
+  margin-top: 20px;
+  text-align: center;
+}
 #timer {
     font-size: 18px;
     text-align: center;
     margin-bottom: 20px;
+}
+#timer3 {
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 20px;
 }
 button {
     display: block;
@@ -76,6 +94,14 @@ button:hover {
 }
 #timer-selection label {
     margin-right: 10px;
+}
+#timer-selection3 {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+#timer-selection3 label {
+  margin-right: 10px;
 }
 #clickHere{
   text-decoration: none;
@@ -221,6 +247,31 @@ button:hover {
 
 .answers label:hover {
   background-color: #e0e0e0;
+}
+
+.answers3 {
+  list-style-type: none;
+  padding: 0;
+}
+
+.answers3 li {
+  margin-bottom: 10px;
+}
+
+.answers3 label {
+  display: block;
+  cursor: pointer;
+}
+
+.answers3 label {
+  display: inline-block;
+  margin-bottom: 10px; /* Add some spacing between each answer option */
+}
+
+.answers3 input[type="radio"] {
+  display: inline-block;
+  vertical-align: middle; /* Align the radio button vertically with the text */
+  margin-right: 5px; /* Add some spacing between the radio button and the text */
 }
 
 .letter {
@@ -405,7 +456,7 @@ button:hover {
 }
 .tab{
   cursor: pointer;
-  padding:5px 2px;
+  padding:5px 20px;
   margin:0px;
   background:#000;
   display:inline-block;
