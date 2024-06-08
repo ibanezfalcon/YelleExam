@@ -132,7 +132,7 @@ function startQuiz3() {
         
             goodJobResult3.innerHTML = resultsContainer.innerHTML;
             showModalAfterDelay3();
-            startExam.style.display = 'block'; // Display restart button
+            startExam3.style.display = 'block'; // Display restart button
             document.getElementById('submit-quiz3').style.display = 'none'; // Hide submit button
         
             
